@@ -1139,7 +1139,7 @@ class FileAttachmentField extends FileField
     public function RootThumbnailsDir()
     {
         return $this->getSetting('thumbnailsDir') ?:
-            ModuleResourceLoader::singleton()->resolveResource('unclecheese/dropzone:images/file-icons');
+            ModuleResourceLoader::singleton()->resolveResource('unclecheese/dropzone:images/file-icons')->getURL();
     }
 
     /**
@@ -1312,7 +1312,7 @@ class FileAttachmentField extends FileField
         }
 
         if($filename) {
-            if($defaultClass == "Image" 
+            if($defaultClass == Image::class
                 && $this->config()->upgrade_images 
                 && !Injector::inst()->get($class) instanceof Image
             ) {
